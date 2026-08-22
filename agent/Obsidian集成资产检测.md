@@ -12,7 +12,7 @@ Qoder 本机无 Obsidian 专属 MCP 与 skill，但具备 vault 文件直接读�
 | `realclaudian` | Obsidian 内运行 Claude 会话 |
 | `obsidian-git` | 版本管理与同步 |
 
-其他：`templater-obsidian`、`dataview`、`folder-notes`、`obsidian-kanban`、`terminal` 等。
+其他已启用：`templater-obsidian`、`dataview`、`obsidian-kanban`、`tag-wrangler`、`copilot`、`obsidian-excalidraw-plugin`、`terminal` 等；另有 `folder-notes` 已安装但未启用。
 
 ## 三、Trae CN 可移植资产
 

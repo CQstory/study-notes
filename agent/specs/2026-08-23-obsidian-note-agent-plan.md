@@ -372,4 +372,9 @@ git -C "d:\笔记" add "agent/Obsidian集成资产检测.md"; git -C "d:\笔记"
 
 - **Spec 覆盖**：设计文档第 3 节布局 → Task 1/2/4/5；第 4 节工作流 → Task 2（skill 正文）；第 5 节安全规则 → Task 2/4；第 6 节错误处理 → Task 2；MCP 配置 → Task 6；第 7 节测试 → Task 7；第 8 节交付物 6 项均有对应任务
 - **占位符扫描**：无 TBD/TODO；所有文档内容完整给出
-- **一致性**：路径统一使用 `agent\skills\`（权威）与 `.qoder\skills\`（生效）；skill 名统一 `note-capture`
+- **一致性**：skill 统一存放于 `agent\skills\`（见下方执行偏离记录）
+
+## 执行偏离记录（2026-08-23）
+
+- **Task 3 取消**：执行中发现 Qoder 直接扫描加载 `agent\skills\` 目录（当前会话技能列表可见全部 4 个 skill，base directory 即 `d:\笔记\agent\skills\...`），因此无需复制到 `.qoder\skills\`，避免同名 skill 重复。AGENT.md 与备份指导已按单一位置方案编写。
+- **Task 6 部分完成**：npx 环境验证通过（v11.6.2）；MCP 服务器需用户在 Qoder 设置面板手动添加，已提供配置片段。
