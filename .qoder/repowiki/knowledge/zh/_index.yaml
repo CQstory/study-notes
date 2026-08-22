@@ -1,0 +1,43 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: zh-CN
+branch: Q0DeR-MaG1C-BrAnCh-Fo2-NoN-GiT-Or-No-C0MmIt
+nodes_managed: true
+exported_at: "2026-08-22T16:43:29Z"
+modules:
+    "":
+        dir_name: 考研复习笔记仓库
+        title: 考研复习笔记仓库
+        scope:
+            - 斜渐近线.md
+            - 曲率.md
+            - 矩阵的幂运算.md
+            - 线性表题.md
+            - 隐函数求导.md
+            - test.md
+            - 矩阵运算公式笔记.md
+            - 行列式.md
+        source_files: []
+        children:
+            - cs_408_notes
+            - math_one_notes
+        depends_on: []
+        related_to: []
+    cs_408_notes:
+        dir_name: 408计算机考研笔记
+        title: 408计算机考研笔记
+        scope:
+            - 408/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    math_one_notes:
+        dir_name: 考研数学一笔记索引
+        title: 考研数学一笔记索引
+        scope:
+            - 数一/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []

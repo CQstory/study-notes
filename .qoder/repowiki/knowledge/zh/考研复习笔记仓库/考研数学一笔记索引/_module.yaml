@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: math_one_notes
+title: 考研数学一笔记索引
+scope:
+    - 数一/
+source_files: []
+depends_on: []
+related_to: []

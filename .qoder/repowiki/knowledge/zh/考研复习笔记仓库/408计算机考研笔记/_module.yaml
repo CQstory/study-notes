@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: cs_408_notes
+title: 408计算机考研笔记
+scope:
+    - 408/
+source_files: []
+depends_on: []
+related_to: []

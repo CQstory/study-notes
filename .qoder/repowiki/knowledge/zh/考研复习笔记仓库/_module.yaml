@@ -1,0 +1,15 @@
+schema_version: 1
+module_path: ""
+title: 考研复习笔记仓库
+scope:
+    - 斜渐近线.md
+    - 曲率.md
+    - 矩阵的幂运算.md
+    - 线性表题.md
+    - 隐函数求导.md
+    - test.md
+    - 矩阵运算公式笔记.md
+    - 行列式.md
+source_files: []
+depends_on: []
+related_to: []
