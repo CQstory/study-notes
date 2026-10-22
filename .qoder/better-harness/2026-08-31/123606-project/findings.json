@@ -1,0 +1,202 @@
+{
+  "summary": {
+    "projectName": "笔记",
+    "locale": "zh-CN",
+    "modelId": "agent-work-loop-v4",
+    "reportContractVersion": 26,
+    "overview": "项目具备 Obsidian 笔记技能和 MCP 集成，但缺少变更验证路由和项目指令文件，导致编辑后的正确性无法机械验证，任务上下文缺乏统一引导。",
+    "aiAgentPractice": {
+      "inspectedSurfaces": [
+        "Skills",
+        "MCP",
+        "Plugins",
+        "Hooks"
+      ],
+      "coverageRows": [
+        {
+          "surface": "Skills",
+          "scopes": [
+            "Global",
+            "Plugin"
+          ],
+          "count": 59,
+          "paths": [
+            "~/.agents/skills/brainstorming/SKILL.md",
+            "~/.agents/skills/dispatching-parallel-agents/SKILL.md",
+            "~/.agents/skills/executing-plans/SKILL.md",
+            "~/.agents/skills/finishing-a-development-branch/SKILL.md",
+            "~/.agents/skills/lark-approval/SKILL.md",
+            "~/.agents/skills/lark-apps/SKILL.md",
+            "~/.agents/skills/lark-attendance/SKILL.md",
+            "~/.agents/skills/lark-base/SKILL.md",
+            "~/.agents/skills/lark-calendar/SKILL.md",
+            "~/.agents/skills/lark-contact/SKILL.md",
+            "~/.agents/skills/lark-doc/SKILL.md",
+            "~/.agents/skills/lark-drive/SKILL.md"
+          ]
+        },
+        {
+          "surface": "Hooks",
+          "scopes": [
+            "Plugin"
+          ],
+          "count": 3,
+          "paths": [
+            "~/.qoder/plugins/cache/qoder-bundler/security-scan/.qoder-plugin/qoder-hooks.json",
+            "~/.qoder/plugins/cache/qoder-marketplace/superpowers/5.1.0/hooks/hooks.json"
+          ]
+        },
+        {
+          "surface": "MCP",
+          "scopes": [
+            "Project",
+            "Plugin"
+          ],
+          "count": 2,
+          "paths": [
+            ".qoder/mcp.json",
+            "~/.qoder/plugins/cache/qoder-bundler/computer-use/.mcp.json"
+          ]
+        },
+        {
+          "surface": "Plugins",
+          "scopes": [
+            "Plugin"
+          ],
+          "count": 5,
+          "paths": [
+            "~/.qoder/plugins/cache/qoder-bundler/better-harness/.qoder-plugin/plugin.json",
+            "~/.qoder/plugins/cache/qoder-bundler/computer-use/.qoder-plugin/plugin.json",
+            "~/.qoder/plugins/cache/qoder-bundler/qoder-create-plugin",
+            "~/.qoder/plugins/cache/qoder-bundler/security-scan/.qoder-plugin/plugin.json",
+            "~/.qoder/plugins/cache/qoder-marketplace/superpowers/5.1.0/.qoder-plugin/plugin.json"
+          ]
+        },
+        {
+          "surface": "Rules",
+          "scopes": [
+            "Project"
+          ],
+          "count": 0
+        },
+        {
+          "surface": "Commands",
+          "scopes": [
+            "Project"
+          ],
+          "count": 0
+        },
+        {
+          "surface": "Custom Agents",
+          "scopes": [
+            "Project"
+          ],
+          "count": 0
+        },
+        {
+          "surface": "Workflows",
+          "scopes": [
+            "Project"
+          ],
+          "count": 0
+        },
+        {
+          "surface": "Memories",
+          "scopes": [
+            "Project"
+          ],
+          "count": 0
+        }
+      ],
+      "repositorySourceRows": []
+    },
+    "assignmentSummaries": [],
+    "dimensions": [
+      {
+        "id": "task-understanding",
+        "label": "任务理解",
+        "score": 45,
+        "summary": "存在规划文件，但缺少项目指令文件引导上下文路由和任务边界。",
+        "findingRefs": [
+          "no-project-agent-instructions"
+        ]
+      },
+      {
+        "id": "controlled-execution",
+        "label": "可控执行",
+        "score": 50,
+        "summary": "MCP 和技能已配置，但未与任务入口连接；项目技能缺少输出规范和验证步骤。",
+        "findingRefs": [
+          "project-skills-lack-output-and-validation"
+        ]
+      },
+      {
+        "id": "change-validation",
+        "label": "改动验证",
+        "score": 20,
+        "summary": "观察到 1041 次编辑事件但零验证命令；项目无测试、无 lint、无 markdown 结构检查。",
+        "findingRefs": [
+          "no-validation-route-for-note-changes"
+        ]
+      },
+      {
+        "id": "reliable-delivery",
+        "label": "可靠交付",
+        "score": 25,
+        "summary": "变更已发生但无结构化验收证据，无回滚或恢复路由。",
+        "findingRefs": []
+      },
+      {
+        "id": "learning-capture",
+        "label": "经验沉淀",
+        "score": 35,
+        "summary": "已完成有界学习审查；无可复用改进被验证，无可比后续结果支撑。",
+        "findingRefs": []
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "no-validation-route-for-note-changes",
+      "title": "Markdown 笔记变更后无法机械验证正确性",
+      "severity": "Low",
+      "reason": "观察到 1041 次编辑事件，但分析窗口内无验证命令执行。项目无测试、无 lint、无 markdown 结构检查。所有变更候选以 changed-without-check 关闭。后果：笔记 frontmatter 格式错误、内部链接断裂或目录结构不一致无法被自动发现，只能依赖人工复查。原因是项目未配置任何验证路由，且 Obsidian 插件源代码（11 个 JS 文件）不属于项目核心产出，真正的产出（markdown 笔记）缺少对应的检查机制。置信度中等——证据来自有界会话采样，但零验证命令的一致性较强。",
+      "expectedOutput": [
+        "Update the existing Skill owner identified by the reviewed evidence and retain a focused validation result."
+      ],
+      "expectedArtifact": "Skill",
+      "aiFixPrompt": "/better-harness fix this issue\n\n为 Obsidian markdown 笔记添加最小验证路由。\n\n## 建议方向\n\n在 agent/skills/ 下扩展 note-capture 或新建一个验证技能，定义至少一个可执行的 markdown 检查（如 frontmatter 格式、链接完整性、目录索引一致性）。\n\n## 验证\n\n- 编辑一条笔记后运行验证命令\n- 确认返回结构化结果（pass/fail）\n- 确认检查结果与笔记实际状态一致",
+      "dimensionRefs": [
+        "change-validation"
+      ]
+    },
+    {
+      "id": "no-project-agent-instructions",
+      "title": "任务执行缺少项目级上下文引导",
+      "severity": "Low",
+      "reason": "项目无 AGENTS.md 或等效指令文件。agent 无法通过项目拥有的指令了解笔记约定（Obsidian markdown 风格、目录结构、链接规范、408 考研笔记体系结构）。后果：每次任务依赖会话内推断而非稳定的项目约定，可能导致笔记风格不一致或遗漏目录索引更新。证据来自项目扫描——agentInstructions 状态为 missing，0 个指令文件。规划文件存在于 agent/specs/ 但属于历史设计文档，非当前执行指令。置信度中等。",
+      "expectedOutput": [
+        "Update the existing Document owner identified by the reviewed evidence and retain a focused validation result."
+      ],
+      "expectedArtifact": "Document",
+      "aiFixPrompt": "/better-harness fix this issue\n\n创建 AGENTS.md，声明项目笔记约定。\n\n## 建议方向\n\n在项目根目录创建 AGENTS.md，包含：\n- Obsidian markdown 风格约定\n- 408 笔记目录结构和索引规则\n- 链接和 frontmatter 规范\n\n## 验证\n\n- 确认 AGENTS.md 存在且内容完整\n- 新会话中 agent 能引用该文件中的约定",
+      "dimensionRefs": [
+        "task-understanding"
+      ]
+    },
+    {
+      "id": "project-skills-lack-output-and-validation",
+      "title": "项目技能缺少输出规范和验证步骤，调用后无法确认结果正确性",
+      "severity": "Low",
+      "reason": "4 个项目技能中，note-capture 缺少 trigger、output 和 validation 定义；obsidian-bases、obsidian-cli、obsidian-markdown 缺少 output 和 validation。后果：即使技能被调用，也无法机械验证笔记是否按预期格式生成。证据来自项目技能扫描——4 个 SKILL.md 中 0 个定义了验证步骤，3 个缺少输出规范。note-capture 在会话中被观察到 1 次调用，但调用后无验证。置信度中等。",
+      "expectedOutput": [
+        "Update the existing Skill owner identified by the reviewed evidence and retain a focused validation result."
+      ],
+      "expectedArtifact": "Skill",
+      "aiFixPrompt": "/better-harness fix this issue\n\n为项目技能补充输出规范和验证步骤。\n\n## 建议方向\n\n为 agent/skills/ 下的每个 SKILL.md 添加：\n- 输出格式定义（如 markdown frontmatter 模板）\n- 至少一个验证步骤（如检查文件是否存在、格式是否正确）\n\n## 验证\n\n- 每个 SKILL.md 有明确的输出规范\n- 调用技能后可运行验证步骤",
+      "dimensionRefs": [
+        "controlled-execution"
+      ]
+    }
+  ]
+}
